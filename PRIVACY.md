@@ -1,6 +1,6 @@
 # Privacy Policy — F4T Tools
 
-**Last updated:** 4 October 2026
+**Last updated:** 18 November 2026
 
 F4T Tools is an unofficial browser extension that shows extra profile and activity
 information for [Free4Talk](https://www.free4talk.com) users. It is not affiliated
@@ -18,6 +18,9 @@ browsers. None of it is sent to us except as described in the next section.
 | On/off switch | Remembers whether the extension is enabled |
 | Display preferences | Remembers your avatar display choices |
 | Welcome message | Your welcome and welcome-back texts, whether it's turned on, and the welcome-back delay |
+| Auto kick (Pro) | Your auto-kick list (the user IDs and names you add) and its switches |
+| Kick spam bots | Whether it's turned on, and the last list of flagged accounts (their user IDs and names) fetched from the F4T tracker, so every tab shares one copy |
+| Room timer | Whether the in-room timer is shown |
 | Saved Chats (Pro) | Chat history of rooms you visit, so you can browse it later. Stored only on your device, in your browser's storage for free4talk.com. Never transmitted anywhere. You can delete any saved conversation in the panel, and there is a 200-room cap after which the oldest is removed. |
 | DM history (Pro) | Your direct messages with friends, as Free4Talk loads them, so they stay visible after Free4Talk deletes them (it keeps only the last 7 days). Stored only on your device, in your browser's storage for free4talk.com. Never transmitted anywhere. |
 | Spotify Client ID (Pro) | The ID of the Spotify app you create during setup, so you only enter it once |
@@ -27,6 +30,8 @@ browsers. None of it is sent to us except as described in the next section.
 | YouTube remote card (Pro) | Where you left the card on the page, whether it's minimized, and your queue (the videos' IDs, titles and channels) |
 | Skip non-music parts | Whether it's turned on |
 | Update information | Only in the version distributed outside the Chrome Web Store |
+| What's new | The last version whose release notes were shown, so the page opens once per release |
+| What's new switch | Whether to open the what's-new page after updates |
 
 ## What the extension sends
 
@@ -37,7 +42,11 @@ activity summary from `https://tracker.free4talk.me`. The request contains:
 - **your API key**, so the server knows the request is authorised.
 
 The same API key is also used to check your subscription level, which unlocks the
-Pro features.
+Pro features. Pro is bought on free4talk.me through Buy Me a Coffee; the extension
+never sees or stores any payment details, only whether your account is Pro. How
+payment data is handled, and that support payments are not refundable, is covered
+by free4talk.me's [Privacy Policy](https://www.free4talk.me/privacy) and
+[Terms of Service](https://www.free4talk.me/terms).
 
 If you connect the **Spotify Player** (a Pro feature), the extension talks directly
 to Spotify (`accounts.spotify.com` and `api.spotify.com`) to sign you in and list
@@ -64,6 +73,17 @@ never learns which video you're playing. Nothing about you is sent.
 If you turn on **Welcome message**, the extension posts your message into the room's
 chat through Free4Talk itself, from your account, when someone joins — exactly as if
 you had typed it. It goes only to Free4Talk, like any chat message you send.
+
+If you use **Auto kick** (a Pro feature), each user ID or name you add to the list is
+looked up on `https://tracker.free4talk.me` to fill in the other half (the name for an
+ID, the ID for a name). The request contains only what you typed.
+
+If you turn on **Kick spam bots**, the extension downloads the public list of accounts
+the F4T tracker flags as spam bots from `https://tracker.free4talk.me`, at most once
+every 15 minutes. Nothing about you or your room is sent with it.
+
+Kicks, by Auto kick or Kick spam bots, go through Free4Talk itself, from your account,
+exactly as if you had pressed Kick Out. Who is in your room is never sent anywhere.
 
 Beyond that, the extension's only other network activity is loading images: user
 avatars from Free4Talk's image servers, album art from Spotify's image servers, and
